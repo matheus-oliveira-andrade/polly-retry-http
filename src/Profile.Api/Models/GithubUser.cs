@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Profile.Api.Models;
 
 public class GithubUser
@@ -7,8 +9,13 @@ public class GithubUser
     public string Name { get; set; }
     public string Location { get; set; }
     public string Blog { get; set; }
-    public DateOnly CreatedAt { get; set; }
     
+    [JsonProperty("created_at")]
+    public DateTime CreatedAt { get; set; }
+    
+    [JsonProperty("avatar_url")]
     public string AvatarUrl { get; set; }
+    
+    [JsonProperty("url")]
     public string ProfileUrl { get; set; }
 }

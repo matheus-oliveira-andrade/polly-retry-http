@@ -1,5 +1,6 @@
 using System.Net;
 using System.Text.Json;
+using Newtonsoft.Json;
 using Profile.Api.Models;
 
 namespace Profile.Api.Services;
@@ -33,7 +34,7 @@ public class GithubService : IGithubService
 
         var result = await response.Content.ReadAsStringAsync();
 
-        var githubUser = JsonSerializer.Deserialize<GithubUser>(result);
+        var githubUser = JsonConvert.DeserializeObject<GithubUser>(result);
         
         _logger.LogInformation("Github user {@User} found", githubUser);
 
